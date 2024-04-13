@@ -1,0 +1,20 @@
+spring:
+  config.import:
+    - optional:config/database.yml
+    - optional:config/logging.yml
+  web.resources.add-mappings: false
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 25MB
+
+server:
+  port: 8090
+
+
+jasypt:
+  encryptor:
+    password: juchan123!@#
+
+
+

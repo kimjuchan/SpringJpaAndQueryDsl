@@ -1,0 +1,32 @@
+#LOCAL//DEV 환경
+#VM 옵션 : -Dspring.profiles.active= 해당 사용 값
+spring:
+  config:
+    activate:
+      on-profile: local,dev
+
+#logging:
+  #level:
+    #org:
+      #hibernate:
+        #parameter 값 로그 출력 설정. (ex binding parameter [1] as [type] -[value]) 형태
+        #type:
+          #descriptor:
+            #sql:
+              #BasicBinder: trace
+
+
+#p6spy 로그 설정
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: true
+
+
+#분할 한다는 의미.
+---
+#PROD 환경
+spring:
+  config:
+    activate:
+      on-profile: prod

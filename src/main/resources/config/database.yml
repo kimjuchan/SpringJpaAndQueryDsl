@@ -1,0 +1,38 @@
+#LOCAL//DEV 환경
+spring:
+  config:
+    activate:
+      on-profile: local, dev
+  datasource:
+    #첫 설정은 일단 암호화 안한상태로..(추후에 jasypt을 통해서 암호화 설정 해봐야함)
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/dev_demo
+    username: root
+    password: 1q2w3e4r!@
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+        #show-sql: true
+        #초기 데이터 설정 여부
+        #defer-datasource-initialization: true
+        #properties:
+        #hibernate:
+        #쿼리 값 정렬 설정
+      #format_sql: true
+---
+#PROD 환경 (jasypt 암호화 처리)
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    #jayspt  DB 정보 암호화 설정.
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: ENC(d92Uwy+NUiZFyAohveVu0l5oWJHKndK1UlIGKn2pucA5rNLgrNzLjLP9+KvpSeTLfMyx7TUaa0MA963ZJCGrurH4sOtngab31wHAlVqhRvg=)
+    username: ENC(JJ9USBV1ouxCHg81hCbS/vXxl0d7tDSWuOD1em3/Two3+ZnJoKLUWHcNFZfgdEis)
+    password: ENC(+XnnkIVL4xQCPfEzs/eUb3AEJ53BOjLr9tfxiJRZbjs+aA2hdlCofbptJgE00BeF)
+  jpa:
+    hibernate:
+      ddl-auto: create
+
