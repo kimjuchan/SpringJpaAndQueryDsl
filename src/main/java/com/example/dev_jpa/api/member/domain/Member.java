@@ -31,6 +31,7 @@ public class Member extends BaseEntity {
     private String phoneNumber;
 
     @Embedded
+    @Setter
     private Address address;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
@@ -61,15 +62,15 @@ public class Member extends BaseEntity {
         }
     }*/
 
-    public MemberDto of(){
+    public static MemberDto of(Member member){
         return MemberDto.builder()
-                .loginId(this.loginId)
-                .password(this.password)
-                .userName(this.userName)
-                .phoneNumber(this.phoneNumber)
-                .address(this.address)
-                .email(this.email)
-                .team(this.team)
+                .loginId(member.loginId)
+                .password(member.password)
+                .userName(member.userName)
+                .phoneNumber(member.phoneNumber)
+                .address(member.address)
+                .email(member.email)
+                .team(member.team)
                 .build();
     }
 }

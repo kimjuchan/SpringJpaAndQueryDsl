@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.Locale;
 
 
-
+//쿼리 로그 설정
 //참조 사이트 : https://velog.io/@cvcvcx9/p6spy%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EC%BF%BC%EB%A6%AC-%EB%A7%A4%EA%B0%9C%EB%B3%80%EC%88%98-%EB%A1%9C%EA%B7%B8
 @Configuration
 public class P6spyConfig implements MessageFormattingStrategy {

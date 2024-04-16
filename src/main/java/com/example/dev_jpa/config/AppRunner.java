@@ -1,8 +1,10 @@
 package com.example.dev_jpa.config;
 
 
+import com.example.dev_jpa.api.comment.Comment;
 import com.example.dev_jpa.api.member.domain.Member;
 import com.example.dev_jpa.api.member.enums.Address;
+import com.example.dev_jpa.api.post.Post;
 import com.example.dev_jpa.api.team.domain.Team;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -26,7 +28,21 @@ public class AppRunner implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         log.info("======Init Account Create Start======");
-        Address addr = new Address("서울특별시","관악구","신림동");
+        //Casacade ex
+        Post post = new Post();
+        post.setTitle("test1");
+
+        Comment comment1 = new Comment();
+        comment1.setContent("comment1...");
+        post.addComment(comment1);
+
+        Comment comment2 = new Comment();
+        comment2.setContent("comment2...");
+        post.addComment(comment2);
+
+        em.persist(post);
+
+        /*Address addr = new Address("서울특별시","관악구","신림동");
 
         for(int idx=0; idx<5; idx++){
             var team = new Team();
@@ -48,7 +64,7 @@ public class AppRunner implements ApplicationRunner {
         em.persist(teamA);
         member.addTeam(teamA);
         em.persist(member);
-        em.flush();
+        em.flush();*/
         log.info("======Init Account Create End======");
     }
 }
