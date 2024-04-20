@@ -8,6 +8,7 @@ import com.example.dev_jpa.api.member.repository.MemberRepository;
 import com.example.dev_jpa.api.member.service.MemberService;
 import com.example.dev_jpa.common.dto.ApiResponse;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@Slf4j
 @RequiredArgsConstructor
 @RequestMapping("/api/member")
 public class MemberRestController {
@@ -31,6 +33,14 @@ public class MemberRestController {
     public ApiResponse<Long> createMember(@RequestBody List<MemberRequest> request){
             Long createCount = memberService.createMember(request);
             return ApiResponse.create(createCount);
+    }
+
+
+    @PostMapping("/create/event")
+    public void createEvenetListener(@RequestBody MemberRequest request){
+        log.info("============Member created Event Listener Method START============");
+        memberService.member_registered_EventListener_test(request);
+        log.info("============Member created Event Listener Method END============");
     }
 
 }

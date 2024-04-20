@@ -12,7 +12,6 @@ public interface CommentRepository extends MyRepository<Comment, Long> {
     List<Comment> findByTitleContains(String title);
 
 */
-
     Stream<Comment> findByContentContains(String keyword);
 
 }
