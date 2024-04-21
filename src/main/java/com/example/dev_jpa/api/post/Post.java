@@ -2,6 +2,7 @@ package com.example.dev_jpa.api.post;
 
 
 import com.example.dev_jpa.api.comment.Comment;
+import com.example.dev_jpa.api.post.dto.PostDto;
 import com.example.dev_jpa.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -22,7 +23,8 @@ public class Post extends BaseEntity {
 
     private String title;
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.PERSIST)
+    //@OneToMany(mappedBy = "post", cascade = CascadeType.PERSIST)
+    @OneToMany
     private List<Comment> commentList = new ArrayList<>();
 
     public void addComment(Comment comment){
@@ -30,4 +32,9 @@ public class Post extends BaseEntity {
         comment.setPost(this);
     }
 
+    public PostDto toDto(){
+        return PostDto.builder()
+                .title(this.title)
+                .build();
+    }
 }

@@ -29,7 +29,7 @@ public class AppRunner implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         log.info("======Init Account Create Start======");
         //Casacade ex
-        Post post = new Post();
+        /*Post post = new Post();
         post.setTitle("test1");
 
         Comment comment1 = new Comment();
@@ -40,7 +40,7 @@ public class AppRunner implements ApplicationRunner {
         comment2.setContent("comment2...");
         post.addComment(comment2);
 
-        em.persist(post);
+        em.persist(post);*/
 
         /*Address addr = new Address("서울특별시","관악구","신림동");
 

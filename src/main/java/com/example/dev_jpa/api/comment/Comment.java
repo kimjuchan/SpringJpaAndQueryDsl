@@ -21,7 +21,6 @@ public class Comment extends BaseEntity {
 
     private String content;
 
-    @ManyToOne()
-    @JoinColumn(name = "post_id")
+    @ManyToOne(fetch = FetchType.EAGER)
     private Post post;
 }
